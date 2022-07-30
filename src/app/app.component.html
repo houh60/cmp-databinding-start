@@ -1,9 +1,24 @@
 <div class="container">
-    <app-cockpit (serverCreated)="onServerAdded($event)" (blueprintCreated)="onBlueprintAdded($event)"></app-cockpit>
+    <!-- <app-cockpit (serverCreated)="onServerAdded($event)" (blueprintCreated)="onBlueprintAdded($event)"></app-cockpit>
     <hr>
     <div class="row">
         <div class="col-xs-12">
-            <app-server-element *ngFor="let element of serverElements" [sElement]="element"></app-server-element>
+            <app-server-element *ngFor="let element of serverElements" [sElement]="element">
+                <p>
+                    <strong *ngIf="element.type === 'server'" style="color: red">{{ element.content }}</strong>
+                    <em *ngIf="element.type === 'blueprint'">{{ element.content }}</em>
+                </p>
+            </app-server-element>
+        </div>
+    </div> -->
+    <app-game-control (numOut)="onIntervalFired($event)"></app-game-control>
+
+    <div class="row">
+        <div class="col-xs-2">
+            <app-even *ngFor="let num of evenNums; trackBy: trackByFn" [number]="num"></app-even>
+        </div>
+        <div class="col-xs-2">
+            <app-odd *ngFor="let num of oddNums; trackBy: trackByFn" [number]="num"></app-odd>
         </div>
     </div>
 </div>
